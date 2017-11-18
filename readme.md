@@ -1,9 +1,21 @@
 ## 说明
 
 
-1. 安装 composer require jarvis/md5
+1. 安装 composer require jarvis/md5 
 
-2. Find the providers key in config/app.php and register the Captcha Service Provider.
+2. reuqire安装 composer install
+
+   ```
+   {
+       "require": {
+            "jarvis/md5": "~1.0"
+       }
+   }
+   ```
+
+   ​
+
+3. Find the providers key in config/app.php and register the Captcha Service Provider.
 
    ```
    'providers' => [    
@@ -13,7 +25,7 @@
 
    ​
 
-3. For Example
+4. For Example
 
    ```
    <?php
@@ -38,7 +50,7 @@
    }
    ```
 
-   4.thinker use
+   4.tinker use
 
    ```
    ☁  Laravel54 [master] ⚡php artisan tinker
