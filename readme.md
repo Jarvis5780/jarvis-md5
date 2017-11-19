@@ -19,7 +19,7 @@
 
    ```
    'providers' => [    
-   	Mews\Captcha\CaptchaServiceProvider::class,
+   	Jarvis\Md5\Md5HasherProvider::class,
    ]
    ```
 
@@ -34,6 +34,7 @@
 
    use App\Http\Controllers\Controller;
    use Jarvis\Md5;
+   ```
 
 
    class JarvisController extends Controller
@@ -41,7 +42,7 @@
        public function md5(){
            return app('jarvis-md5')->make('123456',['salt'=>'Jarvis']);
        }
-
+    
        public function md5check(){
            //$bool = app('jarvis-md5')->check('123456','1f3653b1e691bac8a0cf38e84b416373',['salt'=>'Jarvis']);
            $bool = app('jarvis-md5')->check('123456-','1f3653b1e691bac8a0cf38e84b416373',['salt'=>'Jarvis']);
@@ -62,8 +63,10 @@
            => false
    ```
 
-   ​
+   
 
 
   
 
+
+   ```
