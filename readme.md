@@ -1,7 +1,9 @@
 ## 说明
 
 
-1. 安装 composer require jarvis/md5 
+1. composer安装  require jarvis/md5 
+
+   ​
 
 2. reuqire安装 composer install
 
@@ -21,6 +23,10 @@
    'providers' => [    
    	Jarvis\Md5\Md5HasherProvider::class,
    ]
+
+   'aliases' => [    
+   	'Md5Hasher' => Jarvis\Md5\Facade\Md5Hasher::class,
+   ]
    ```
 
    ​
@@ -32,19 +38,42 @@
 
    namespace App\Http\Controllers\Test;
 
+   use Illuminate\Http\Request;
    use App\Http\Controllers\Controller;
-   use Jarvis\Md5;
+   use Md5Hasher;
+
+
+   /**
+    * Class JarvisController
+    * @package App\Http\Controllers\Test
+    */
    class JarvisController extends Controller
    {
-      public function md5(){
-            return app('jarvis-md5')->make('123456',['salt'=>'Jarvis']);
-      }
+       /**
+        * 生成MD5加密值
+        * @return mixed
+        */
+       public function md5(){
+           //return app('jarvis-md5')->make('123456',['salt'=>'Jarvis']);
+          return Md5Hasher::make('123456',['salt'=>'Jarvis']);
+       }
 
-      public function md5check(){
-            //$bool = app('jarvis-md5')->check('123456','1f3653b1e691bac8a0cf38e84b416373',['salt'=>'Jarvis']);
-            $bool = app('jarvis-md5')->check('123456-','1f3653b1e691bac8a0cf38e84b416373',['salt'=>'Jarvis']);
-            dd($bool);
-      }
+       /**
+        *检验是否正确
+        */
+       public function md5check(){
+
+           //true
+           //$bool = app('jarvis-md5')->check('123456','1f3653b1e691bac8a0cf38e84b416373',['salt'=>'Jarvis']);
+
+           //false
+           //$bool = app('jarvis-md5')->check('123456-','1f3653b1e691bac8a0cf38e84b416373',['salt'=>'Jarvis']);
+           //dd($bool);
+
+           $bool = Md5Hasher::check('123456-','1f3653b1e691bac8a0cf38e84b416373',['salt'=>'Jarvis']);
+           dd($bool);
+       }
+
    }
 
    ```
