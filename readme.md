@@ -1,7 +1,7 @@
 ## 说明
 
 
-1. composer安装  require jarvis/md5 
+1. composer require jarvis/md5 
 
    ​
 
